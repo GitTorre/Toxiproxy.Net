@@ -14,7 +14,7 @@ namespace Toxiproxy.Net
     public class Client
     {
         private readonly IHttpClientFactory _clientFactory;
-        private readonly JsonConverter[] _deserializeConverter = new[] { new JsonToxicsConverter() };
+        private readonly JsonConverter[] _deserializeConverter = { new JsonToxicsConverter() };
 
         public Client(IHttpClientFactory clientFactory)
         {

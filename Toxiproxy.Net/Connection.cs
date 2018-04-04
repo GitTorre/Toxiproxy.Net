@@ -32,12 +32,12 @@ namespace Toxiproxy.Net
         {
             if (string.IsNullOrEmpty(host))
             {
-                throw new ArgumentNullException("host");
+                throw new ArgumentNullException(nameof(host));
             }
             _host = host;
             _port = port;
             _resetAllToxicsAndProxiesOnClose = resetAllToxicsAndProxiesOnClose;
-            _clientFactory = new HttpClientFactory(new Uri(string.Format("http://{0}:{1}/", _host, _port)));
+            _clientFactory = new HttpClientFactory(new Uri($"http://{_host}:{_port}/"));
         }
 
         public Client Client()

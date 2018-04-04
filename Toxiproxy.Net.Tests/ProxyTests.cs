@@ -37,9 +37,9 @@ namespace Toxiproxy.Net.Tests
             {
                 Name = "slowCloseToxic",
                 Stream = ToxicDirection.DownStream,
-                Toxicity = 80
+                Toxicity = 80,
+                Attributes = {Delay = 50}
             };
-            slowCloseToxic.Attributes.Delay = 50;
             newProxy.Add(slowCloseToxic);
 
             // Retrieve the proxy and check the toxics

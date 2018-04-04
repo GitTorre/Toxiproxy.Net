@@ -4,7 +4,7 @@ using System.Net.Http;
 namespace Toxiproxy.Net
 {
     /// <summary>
-    /// The factory class to create preconfigured HttoClient
+    /// The factory class to create preconfigured HttpClient
     /// </summary>
     /// <seealso cref="Toxiproxy.Net.IHttpClientFactory" />
     internal class HttpClientFactory : IHttpClientFactory
@@ -16,15 +16,11 @@ namespace Toxiproxy.Net
             _baseUrl = baseUrl;
         }
 
-        public Uri BaseUrl
-        {
-            get { return _baseUrl; }
-        }
+        public Uri BaseUrl => _baseUrl;
 
         public HttpClient Create()
         {
-            var client = new HttpClient();
-            client.BaseAddress = _baseUrl;
+            var client = new HttpClient {BaseAddress = _baseUrl};
             client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
             return client;
         }
