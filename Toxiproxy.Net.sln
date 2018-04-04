@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toxiproxy.Net", "Toxiproxy.Net\Toxiproxy.Net.csproj", "{6BD7B017-A750-4889-A66E-97B691838A8D}"
 EndProject
@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E1CEF3
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toxiproxy.Net.Tests", "Toxiproxy.Net.Tests\Toxiproxy.Net.Tests.csproj", "{10087FD2-3D58-47B6-A431-54B78AF4E2AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriverClient", "DriverClient\DriverClient.csproj", "{173FE643-2F99-4723-A0E8-DCDC99277C09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,8 +30,15 @@ Global
 		{10087FD2-3D58-47B6-A431-54B78AF4E2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10087FD2-3D58-47B6-A431-54B78AF4E2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10087FD2-3D58-47B6-A431-54B78AF4E2AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{173FE643-2F99-4723-A0E8-DCDC99277C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173FE643-2F99-4723-A0E8-DCDC99277C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173FE643-2F99-4723-A0E8-DCDC99277C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173FE643-2F99-4723-A0E8-DCDC99277C09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97FC2369-E165-42A9-A79D-0402977AB85E}
 	EndGlobalSection
 EndGlobal

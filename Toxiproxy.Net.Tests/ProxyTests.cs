@@ -26,11 +26,14 @@ namespace Toxiproxy.Net.Tests
             var slicerToxic = new SlicerToxic
             {
                 Name = "SlicerToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes =
+                {
+                    AverageSize = 10,
+                    Delay = 5,
+                    SizeVariation = 1
+                }
             };
-            slicerToxic.Attributes.AverageSize = 10;
-            slicerToxic.Attributes.Delay = 5;
-            slicerToxic.Attributes.SizeVariation = 1;
             newProxy.Add(slicerToxic);
 
             var slowCloseToxic = new SlowCloseToxic
@@ -44,16 +47,17 @@ namespace Toxiproxy.Net.Tests
 
             // Retrieve the proxy and check the toxics
             var toxics = newProxy.GetAllToxics();
-            Assert.Equal(2, toxics.Count());
+            var toxicBases = toxics as ToxicBase[] ?? toxics.ToArray();
+            Assert.Equal(2, toxicBases.Count());
 
-            var slicerToxicInTheProxy = toxics.OfType<SlicerToxic>().Single();
+            var slicerToxicInTheProxy = toxicBases.OfType<SlicerToxic>().Single();
             Assert.Equal(slicerToxic.Name, slicerToxicInTheProxy.Name);
             Assert.Equal(slicerToxic.Stream, slicerToxicInTheProxy.Stream);
             Assert.Equal(slicerToxic.Attributes.AverageSize, slicerToxicInTheProxy.Attributes.AverageSize);
             Assert.Equal(slicerToxic.Attributes.Delay, slicerToxicInTheProxy.Attributes.Delay);
             Assert.Equal(slicerToxic.Attributes.SizeVariation, slicerToxicInTheProxy.Attributes.SizeVariation);
 
-            var slowCloseToxicInTheProxy = toxics.OfType<SlowCloseToxic>().Single();
+            var slowCloseToxicInTheProxy = toxicBases.OfType<SlowCloseToxic>().Single();
             Assert.Equal(slowCloseToxic.Name, slowCloseToxicInTheProxy.Name);
             Assert.Equal(slowCloseToxic.Stream, slowCloseToxicInTheProxy.Stream);
             Assert.Equal(slowCloseToxic.Attributes.Delay, slowCloseToxicInTheProxy.Attributes.Delay);
@@ -77,10 +81,13 @@ namespace Toxiproxy.Net.Tests
             var toxic = new LatencyToxic
             {
                 Name = "LatencyToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes =
+                {
+                    Jitter = 10,
+                    Latency = 5
+                }
             };
-            toxic.Attributes.Jitter = 10;
-            toxic.Attributes.Latency = 5;
             var newToxic = newProxy.Add(toxic);
 
             // Need to retrieve the proxy and check the toxic's values
@@ -109,9 +116,9 @@ namespace Toxiproxy.Net.Tests
             {
                 Name = "SlowCloseToxicTest",
                 Stream = ToxicDirection.UpStream,
-                Toxicity = 0.5
+                Toxicity = 0.5,
+                Attributes = {Delay = 100}
             };
-            toxic.Attributes.Delay = 100;
             var newToxic = newProxy.Add(toxic);
 
             // Need to retrieve the proxy and check the toxic's values
@@ -139,9 +146,9 @@ namespace Toxiproxy.Net.Tests
             {
                 Name = "TimeoutToxicTest",
                 Stream = ToxicDirection.UpStream,
-                Toxicity = 0.5
+                Toxicity = 0.5,
+                Attributes = {Timeout = 10}
             };
-            toxic.Attributes.Timeout = 10;
             var newToxic = newProxy.Add(toxic);
 
             // Need to retrieve the proxy and check the toxic's values
@@ -167,9 +174,9 @@ namespace Toxiproxy.Net.Tests
             var toxic = new BandwidthToxic
             {
                 Name = "BandwidthToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes = {Rate = 100}
             };
-            toxic.Attributes.Rate = 100;
             var newToxic = newProxy.Add(toxic);
 
             // Need to retrieve the proxy and check the toxic's values
@@ -195,11 +202,14 @@ namespace Toxiproxy.Net.Tests
             var toxic = new SlicerToxic
             {
                 Name = "SlicerToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes =
+                {
+                    AverageSize = 10,
+                    Delay = 5,
+                    SizeVariation = 1
+                }
             };
-            toxic.Attributes.AverageSize = 10;
-            toxic.Attributes.Delay = 5;
-            toxic.Attributes.SizeVariation = 1;
             var newToxic = newProxy.Add(toxic);
 
             // Need to retrieve the proxy and check the toxic's values
@@ -227,9 +237,9 @@ namespace Toxiproxy.Net.Tests
             var toxic = new LimitDataToxic
             {
                 Name = "LimitDataToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes = {Bytes = 512}
             };
-            toxic.Attributes.Bytes = 512;
             var newToxic = newProxy.Add(toxic);
 
             // Need to retrieve the proxy and check the toxic's values
@@ -255,11 +265,14 @@ namespace Toxiproxy.Net.Tests
             var firstToxic = new SlicerToxic
             {
                 Name = "SlicerToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes =
+                {
+                    AverageSize = 10,
+                    Delay = 5,
+                    SizeVariation = 1
+                }
             };
-            firstToxic.Attributes.AverageSize = 10;
-            firstToxic.Attributes.Delay = 5;
-            firstToxic.Attributes.SizeVariation = 1;
             newProxy.Add(firstToxic);
 
             var toxicWithSameName = new SlicerToxic
@@ -291,11 +304,14 @@ namespace Toxiproxy.Net.Tests
             var toxic = new SlicerToxic
             {
                 Name = "SlicerToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes =
+                {
+                    AverageSize = 10,
+                    Delay = 5,
+                    SizeVariation = 1
+                }
             };
-            toxic.Attributes.AverageSize = 10;
-            toxic.Attributes.Delay = 5;
-            toxic.Attributes.SizeVariation = 1;
             toxic = proxy.Add(toxic);
 
             // Reload the toxic and update the properties
@@ -331,20 +347,23 @@ namespace Toxiproxy.Net.Tests
             var firstToxic = new SlicerToxic
             {
                 Name = "SlicerToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes =
+                {
+                    AverageSize = 10,
+                    Delay = 5,
+                    SizeVariation = 1
+                }
             };
-            firstToxic.Attributes.AverageSize = 10;
-            firstToxic.Attributes.Delay = 5;
-            firstToxic.Attributes.SizeVariation = 1;
             newProxy.Add(firstToxic);
 
             var secondToxic = new SlowCloseToxic
             {
                 Name = "slowCloseToxic",
                 Stream = ToxicDirection.DownStream,
-                Toxicity = 80
+                Toxicity = 80,
+                Attributes = {Delay = 50}
             };
-            secondToxic.Attributes.Delay = 50;
             newProxy.Add(secondToxic);
 
             // Delete the first toxic
@@ -353,9 +372,10 @@ namespace Toxiproxy.Net.Tests
             // Retrieve the proxy and check that there is the
             // correct toxics
             var toxicsInProxy = newProxy.GetAllToxics();
-            Assert.Equal(1, toxicsInProxy.Count());
-            Assert.IsType<SlowCloseToxic>(toxicsInProxy.First());
-            var singleToxicInProxy = (SlowCloseToxic)toxicsInProxy.First();
+            var toxicBases = toxicsInProxy as ToxicBase[] ?? toxicsInProxy.ToArray();
+            Assert.Equal(1, toxicBases.Count());
+            Assert.IsType<SlowCloseToxic>(toxicBases.First());
+            var singleToxicInProxy = (SlowCloseToxic)toxicBases.First();
             Assert.Equal(secondToxic.Name, singleToxicInProxy.Name);
             Assert.Equal(secondToxic.Stream, singleToxicInProxy.Stream);
             Assert.Equal(secondToxic.Toxicity, singleToxicInProxy.Toxicity);
@@ -383,11 +403,14 @@ namespace Toxiproxy.Net.Tests
             var toxic = new SlicerToxic
             {
                 Name = "SlicerToxicTest",
-                Stream = ToxicDirection.UpStream
+                Stream = ToxicDirection.UpStream,
+                Attributes =
+                {
+                    AverageSize = 10,
+                    Delay = 5,
+                    SizeVariation = 1
+                }
             };
-            toxic.Attributes.AverageSize = 10;
-            toxic.Attributes.Delay = 5;
-            toxic.Attributes.SizeVariation = 1;
             toxic = proxy.Add(toxic);
 
             // Reload the toxic and update the properties
@@ -410,7 +433,7 @@ namespace Toxiproxy.Net.Tests
             Assert.NotEqual(toxicInProxy.Name, updatedToxic.Name);
             Assert.NotEqual(toxicInProxy.Stream, updatedToxic.Stream);
             Assert.IsType<SlicerToxic>(toxicInProxy);
-            var specificToxicInProxy = (SlicerToxic)toxicInProxy;
+            var specificToxicInProxy = toxicInProxy;
             Assert.Equal(toxicInProxy.Attributes.AverageSize, specificToxicInProxy.Attributes.AverageSize);
             Assert.Equal(toxicInProxy.Attributes.Delay, specificToxicInProxy.Attributes.Delay);
             Assert.Equal(toxicInProxy.Attributes.SizeVariation, specificToxicInProxy.Attributes.SizeVariation);
